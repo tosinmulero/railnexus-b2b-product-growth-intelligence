@@ -33,7 +33,7 @@ jobs:
       - name: Generate deterministic synthetic smoke data
         run: python scripts/generate_synthetic_data.py --sessions 10000
 
-      - name: Build analytics and ML stages
+      - name: Build analytics, ML and publication stages
         run: |
           python scripts/build_stage2_warehouse.py
           python scripts/build_stage3_growth_analysis.py
@@ -43,6 +43,8 @@ jobs:
           python scripts/build_stage7_ai_investigation.py
           python scripts/validate_stage8_app.py
           python scripts/validate_stage9_production.py
+          python scripts/build_stage10_publication.py
+          python scripts/validate_stage10_publication.py
 
       - name: Ruff format check
         run: python -m ruff format --check src scripts tests app
