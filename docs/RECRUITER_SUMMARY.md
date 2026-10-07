@@ -22,7 +22,7 @@ It includes:
 - K-Means partner segmentation;
 - validation-selected champion model with a validation-locked operating
   threshold;
-- AI-assisted anomaly investigation with explicit human review;
+- AI-assisted anomaly investigation with evidence-grounded governance controls;
 - Streamlit product application;
 - FastAPI model/analytics service;
 - Docker and GitHub Actions CI.
@@ -44,6 +44,5 @@ It includes:
 - Partner clusters: **2**
 - Network stations: **360**
 - Network routes: **11,822**
-- Investigation cases: **3**
 
 All results above are **synthetic portfolio results**, not Trainline results.
