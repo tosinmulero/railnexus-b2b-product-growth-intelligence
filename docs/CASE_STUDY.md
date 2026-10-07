@@ -17,7 +17,7 @@ RailNexus models the full analytical workflow:
 4. rigorous session-level product experimentation;
 5. graph/geospatial opportunity analysis;
 6. predictive modelling and clustering;
-7. AI-assisted anomaly investigation with human review;
+7. AI-assisted anomaly investigation and governance;
 8. Streamlit product application;
 9. FastAPI, Docker and CI/CD production hardening.
 
@@ -81,10 +81,9 @@ assignment and Smart Alternatives exposure.
 
 Daily metrics are monitored against rolling robust baselines. Structured
 investigation packets contain observed evidence, segment/partner/route context,
-hypotheses to test and recommended owners. Every case requires human review and
-the workflow forbids unsupported causal claims.
-
-Current investigation cases: **3**.
+hypotheses to test and recommended owners. The workflow keeps observations
+separate from hypotheses, preserves analyst decision ownership and forbids
+unsupported causal claims.
 
 ## Production engineering
 
