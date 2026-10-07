@@ -26,7 +26,7 @@ def settle(page: Page) -> None:
 def capture(page: Page, label: str, filename: str) -> None:
     if label != "Executive Overview":
         radio = page.get_by_role("radio", name=label)
-        radio.check()
+        radio.check(force=True)
     settle(page)
     page.screenshot(
         path=str(OUTPUT / filename),
