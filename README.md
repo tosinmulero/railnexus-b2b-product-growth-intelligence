@@ -24,7 +24,7 @@ FastAPI/Docker/CI layer.
 - Logistic Regression, Probit, Random Forest and MLP modelling
 - K-Means partner segmentation with silhouette-based model selection
 - validation-based model selection and a **validation-locked threshold**
-- AI-assisted anomaly triage with mandatory human review
+- AI-assisted anomaly triage with evidence-grounded governance controls
 - Streamlit product analytics application
 - FastAPI model and analytics service
 - Docker, healthchecks and GitHub Actions CI
@@ -41,7 +41,6 @@ FastAPI/Docker/CI layer.
 | Successful booking value | £234,505 |
 | Network stations | 360 |
 | Directed network routes | 11,822 |
-| AI investigation cases | 3 |
 
 ## Product experiment
 
