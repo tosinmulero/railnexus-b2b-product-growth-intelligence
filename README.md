@@ -12,6 +12,22 @@ FastAPI/Docker/CI layer.
 > data in this repository is synthetic. No proprietary Trainline or customer
 > data is used.
 
+## Recruiter visual pack
+
+The screenshots below are captured automatically from the real Streamlit application after the synthetic data and analytical stages are rebuilt in CI.
+
+<p align="center">
+  <img src="docs/screenshots/01_executive_overview.png" alt="RailNexus Executive Overview" width="100%">
+</p>
+
+| Partner Growth & Retention | Experimentation |
+| --- | --- |
+| ![RailNexus Partner Growth](docs/screenshots/02_partner_growth.png) | ![RailNexus Experimentation](docs/screenshots/03_experimentation.png) |
+
+| Network Intelligence | Predictive Modelling |
+| --- | --- |
+| ![RailNexus Network Intelligence](docs/screenshots/04_network_intelligence.png) | ![RailNexus Predictive Modelling](docs/screenshots/05_predictive_modelling.png) |
+
 ## What this project demonstrates
 
 - B2B partner activation, retention, engagement and growth analytics
