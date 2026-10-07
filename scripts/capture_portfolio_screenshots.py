@@ -61,9 +61,7 @@ def main() -> None:
 
     images = sorted(OUTPUT.glob("0*_*.png"))
     if len(images) != len(PAGES):
-        raise RuntimeError(
-            f"Expected {len(PAGES)} screenshots, found {len(images)}."
-        )
+        raise RuntimeError(f"Expected {len(PAGES)} screenshots, found {len(images)}.")
     for image in images:
         if image.stat().st_size < 40_000:
             raise RuntimeError(f"Screenshot looks too small: {image}")
