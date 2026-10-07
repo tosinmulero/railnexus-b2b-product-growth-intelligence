@@ -1,0 +1,87 @@
+name: RailNexus Recruiter Visual Pack
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "app/**"
+      - "scripts/capture_portfolio_screenshots.py"
+      - ".github/workflows/visuals.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  capture-screenshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install project and browser dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-api.txt
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Generate deterministic synthetic portfolio data
+        run: python scripts/generate_synthetic_data.py --sessions 10000
+
+      - name: Build analytical stages required by the app
+        run: |
+          python scripts/build_stage2_warehouse.py
+          python scripts/build_stage3_growth_analysis.py
+          python scripts/build_stage4_experiment.py
+          python scripts/build_stage5_network_intelligence.py
+          python scripts/build_stage6_predictive_modelling.py
+
+      - name: Start Streamlit
+        run: |
+          nohup python -m streamlit run app/streamlit_app.py             --server.headless=true             --server.address=127.0.0.1             --server.port=8501 > /tmp/railnexus-streamlit.log 2>&1 &
+          echo $! > /tmp/railnexus-streamlit.pid
+
+      - name: Wait for app
+        run: |
+          for i in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:8501/_stcore/health > /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          cat /tmp/railnexus-streamlit.log
+          exit 1
+
+      - name: Capture recruiter screenshots
+        run: python scripts/capture_portfolio_screenshots.py
+
+      - name: Validate visual pack
+        run: |
+          test -s docs/screenshots/01_executive_overview.png
+          test -s docs/screenshots/02_partner_growth.png
+          test -s docs/screenshots/03_experimentation.png
+          test -s docs/screenshots/04_network_intelligence.png
+          test -s docs/screenshots/05_predictive_modelling.png
+
+      - name: Publish screenshots to repository
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/screenshots/*.png
+          if git diff --cached --quiet; then
+            echo "Screenshots are already current."
+          else
+            git commit -m "Add RailNexus recruiter screenshot pack [skip ci]"
+            git push origin HEAD:main
+          fi
