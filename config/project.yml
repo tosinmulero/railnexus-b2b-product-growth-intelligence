@@ -1,0 +1,23 @@
+project:
+  name: RailNexus
+  subtitle: B2B Product Growth, Experimentation & Network Intelligence
+  data_classification: synthetic
+  target_domain: B2B rail product analytics
+
+north_star_metric:
+  name: successful_booking_value_per_active_partner
+
+experiment:
+  name: smart_alternatives_v1
+  primary_metric: session_booking_conversion
+  guardrails:
+    - search_latency_ms
+    - no_result_rate
+    - cancellation_rate
+    - refund_rate
+
+quality:
+  seed: 20261007
+  default_sessions: 500000
+  default_partners: 600
+  default_stations: 360

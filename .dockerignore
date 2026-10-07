@@ -1,0 +1,17 @@
+.git
+.github
+.venv
+__pycache__
+.pytest_cache
+.ruff_cache
+*.pyc
+*.pyo
+*.pyd
+*.log
+data/raw
+data/interim
+reports
+tests
+notebooks
+*.zip
+*.ps1

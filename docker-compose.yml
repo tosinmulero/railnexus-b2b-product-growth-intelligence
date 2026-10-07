@@ -1,0 +1,19 @@
+services:
+  railnexus-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: railnexus-api:latest
+    ports:
+      - "8000:8000"
+    environment:
+      RAILNEXUS_ENABLE_DOCS: "true"
+      RAILNEXUS_LOG_LEVEL: "INFO"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped

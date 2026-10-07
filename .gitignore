@@ -1,0 +1,44 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Generated data
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# Generated model binaries
+artifacts/models/*.joblib
+artifacts/backups/
+!artifacts/.gitkeep
+
+# Generated analysis exports
+reports/generated/*
+!reports/generated/.gitkeep
+
+# Local runner / repair artifacts
+RUN_STAGE*.ps1
+railnexus_stage*.ps1
+railnexus-stage*.zip
+FORCE_FIX_STAGE*.ps1
+*_repair.ps1
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
